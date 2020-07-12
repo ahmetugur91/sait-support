@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::post('api/getToken', 'Api\TokenController@getToken');
+
+Route::group(["prefix" => "api", "namespace" => "Api", "middleware" => ['checkToken']], function () {
+    Route::post('me', 'CustomerController@me');
+    Route::post('customer/create', 'CustomerController@create');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

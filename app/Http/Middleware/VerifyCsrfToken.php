@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'api/*' // api ile başlayan route lar için csrf pasif durumda.
     ];
 }
